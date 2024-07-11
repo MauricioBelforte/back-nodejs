@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="../index.html">Inicio</a>
+            <a href="../vistas/usuarios.html">Usuarios</a>
+            <a href="../vistas/productos.html">Productos</a>
+        </nav>
+        <h1>Gestión de Productos</h1>
+    </header>
+   
+    <div class="container">
+
+        <button id="mostrarCrearProductoFormBtn">+ Cargar Productos</button>
+
+        <form id="crearProductoForm" class="hidden" enctype="multipart/form-data">
+
+            <h2>Crear Producto</h2>
+            <label for="nombreProducto">Nombre:</label>
+            <input type="text" id="nombreProducto" name="nombreProducto" required>
+
+            <label for="descripcionProducto">Descripción:</label>
+            <input type="text" id="descripcionProducto" name="descripcionProducto" required>
+
+            <label for="precioProducto">Precio:</label>
+            <input type="number" id="precioProducto" name="precioProducto" step="0.01" required>
+
+            <label for="stockProducto">Stock:</label>
+            <input type="number" id="stockProducto" name="stockProducto" value="1" required>
+
+            <label for="categoriaProducto">Categoría:</label>
+            <select id="categoriaProducto" name="categoriaProducto" required>
+                <option value="">Seleccione una categoría</option>
+                <option value="1">Hombre</option>
+                <option value="2">Mujer</option>
+                <option value="3">Niños</option>
+            </select>
+
+            <label for="archivoProducto">Archivos:</label>
+            <input type="file" id="archivoProducto" name="archivoProducto">
+
+            <button type="submit">Crear Producto</button>
+
+        </form>
+
+
+        <form id="editarProductoForm" class="hidden" enctype="multipart/form-data">
+            
+            <h2>Editar Producto</h2>
+            <input type="hidden" id="editIDProducto" name="editIDProducto">
+
+            <label for="editNombreProducto">Nombre:</label>
+            <input type="text" id="editNombreProducto" name="editNombreProducto" required>
+
+            <label for="editDescripcionProducto">Descripción:</label>
+            <input type="text" id="editDescripcionProducto" name="editDescripcionProducto" required>
+
+            <label for="editPrecioProducto">Precio:</label>
+            <input type="number" id="editPrecioProducto" name="editPrecioProducto" step="0.01" required>
+
+            <label for="editStockProducto">Stock:</label>
+            <input type="number" id="editStockProducto" name="editStockProducto" required>
+
+            <label for="editCategoriaProducto">Categoría:</label>
+            <select id="editCategoriaProducto" name="editCategoriaProducto" required>
+                <option value="">Seleccione una categoría</option>
+                <option value="1">Hombre</option>
+                <option value="2">Mujer</option>
+                <option value="3">Niños</option>
+            </select>
+
+            <img id="currentImageProducto" src="" alt="imagen actual" width="100px">
+
+            <button type="submit">Actualizar Producto</button>
+
+        </form>
+
+
+        <h2>Lista de Productos</h2>
+        <button id="listarProductosBtn">Listar Todos Los Productos</button>
+        <ul class="hidden" id="listaProductos"></ul>
+
+
+    </div>
+    <script src="../js/scriptproductos.js"></script>
+</body>
+</html>
