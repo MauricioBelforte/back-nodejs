@@ -1,5 +1,5 @@
 /*--------SERVIDOR ESTATICO CON EXPRESS-------*/
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 3000; // el process.env.PORT es para que el servidor busque puertos disponibles
 const express = require('express');
 const app = express();
 const path = require('path');// para trabajar con rutas de archivos y directorios
