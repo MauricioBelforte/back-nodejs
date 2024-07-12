@@ -10,7 +10,7 @@ const cors = require('cors');
 
 
 
-//app.use(cors());
+app.use(cors());
 app.use(express.json());
 app.use('/usuarios',usuariosRouter);
 app.use('/productos',productosRouter);
