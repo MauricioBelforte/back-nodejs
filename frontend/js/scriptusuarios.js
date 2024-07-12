@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () =>
         //mostrar imagen de multer
     const currentImage = document.getElementById('currentImage');
 
-    const baseURL = process.env.BASE_URL || 'http://localhost:3000';
+   
     
     // mostrar u ocultar formulario de crear usuario
         mostrarCrearUsuarioFormBtn.addEventListener('click',() =>
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () =>
                 url_imagen: formData.get('archivo')
             };
     
-            const response = await fetch(`${baseURL}/usuarios`,
+            const response = await fetch('http://localhost:3000/usuarios',
             {
                 method: 'POST',
                 body: formData
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () =>
                 mail: formData.get('editMail')
             };
     
-            const response = await fetch(`${baseURL}/usuarios${id}`, {
+            const response = await fetch(`http://localhost:3000/usuarios/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () =>
         async function listarUsuarios()
         {   
             listaUsuarios.classList.toggle('hidden');
-            const response = await fetch(`${baseURL}/usuarios`);
+            const response = await fetch('http://localhost:3000/usuarios');
             const usuarios = await response.json();
     
             listaUsuarios.innerHTML = '';//limpiamos la lista de usuarios
@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () =>
                             button.addEventListener('click', async (e) =>
                             {
                                 const id = e.target.getAttribute('data-id');
-                                const response = await fetch(`${baseURL}/usuarios${id}`,
+                                const response = await fetch(`http://localhost:3000/usuarios/${id}`,
                                 {
                                     method: 'DELETE'
                                 });
