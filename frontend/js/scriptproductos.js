@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () =>
     const currentImageProducto = document.getElementById('currentImageProducto');
    
     
-
+        const baseURL = process.env.BASE_URL || 'http://localhost:3000';
     
         /* Este metodo es para que el boton de crear producto muestre el formulario para crear el producto */
         mostrarCrearProductoFormBtn.addEventListener('click',() =>
@@ -49,9 +49,7 @@ document.addEventListener('DOMContentLoaded', () =>
                 };
                 
                 /* Aca envio una peticion POST a mi API con 2 parametros ya que es POST y le mando todos los datos del formulario*/
-        
-               const response = await fetch('https://back-nodejs-one.vercel.app/productos',
-               
+                const response = await fetch(`${baseURL}/productos`,
                 {
                     method: 'POST',
                     body: formData
@@ -84,8 +82,7 @@ document.addEventListener('DOMContentLoaded', () =>
                     categoria: formData.get('editCategoriaProducto')
                 };
         
-
-                const response = await fetch(`https://back-nodejs-one.vercel.app/productos/${id}`, {
+                const response = await fetch(`${baseURL}/productos${id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
@@ -108,8 +105,7 @@ document.addEventListener('DOMContentLoaded', () =>
         async function listarProductos()
         {
             listaProductos.classList.toggle('hidden');
-        
-            const response = await fetch('https://back-nodejs-one.vercel.app/productos'); //Es una peticion GET por defecto, sino hay que pasar un segundo parametro a la funcion fetch
+            const response = await fetch(`${baseURL}/productos`); //Es una peticion GET por defecto, sino hay que pasar un segundo parametro a la funcion fetch
             const productos = await response.json();
     
             listaProductos.innerHTML = '';//limpiamos la lista de productos
@@ -218,8 +214,7 @@ document.addEventListener('DOMContentLoaded', () =>
                             button.addEventListener('click', async (e) =>
                             {
                                 const id = e.target.getAttribute('data-id-producto');
-                                
-                                const response = await fetch(`https://back-nodejs-one.vercel.app/productos/${id}`,
+                                const response = await fetch(`${baseURL}/productos${id}`,
                                 {
                                     method: 'DELETE'
                                 });
