@@ -1,5 +1,5 @@
 /*--------SERVIDOR ESTATICO CON EXPRESS-------*/
-let port = 3306;
+let port = 3000;
 const express = require('express');
 const app = express();
 const path = require('path');// para trabajar con rutas de archivos y directorios
