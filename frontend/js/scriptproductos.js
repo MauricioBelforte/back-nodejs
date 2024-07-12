@@ -106,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () =>
         /* Aca llama a esta funcion que hace la peticion a nuestra api */
         async function listarProductos()
         {
+            console.log(`${baseURL}/productos`);
             listaProductos.classList.toggle('hidden');
             const response = await fetch(`${baseURL}/productos`); //Es una peticion GET por defecto, sino hay que pasar un segundo parametro a la funcion fetch
             const productos = await response.json();
