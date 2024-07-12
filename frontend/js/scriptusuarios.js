@@ -150,7 +150,15 @@ document.addEventListener('DOMContentLoaded', () =>
     
                   //  const imageSrc = usuario.url_imagen ? `/uploads/${usuario.url_imagen}` :'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUBbNf8tPjjMylsbREVGlN1Dj30k5_JVDZOg&s';
     
-                  const imageSrc = usuario.url_imagen.startsWith('http') ? usuario.url_imagen : `/uploads/usuarios/${usuario.url_imagen}`;
+
+                    
+                   const imageSrc = usuario.url_imagen && usuario.url_imagen.startsWith('http') ?  //Este código verifica primero si producto.url_imagen existe y si empieza con 'http'.
+                   usuario.url_imagen  //Si es así, usa ese valor, es decir la url de postimagenes que viene de la base de datos 
+                  : usuario.url_imagen ? `/uploads/usuarios/${usuario.url_imagen}` //Si no, verifica si producto.url_imagen existe y, de ser así, usa la ruta local, que esta en la base de datos
+                  : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUBbNf8tPjjMylsbREVGlN1Dj30k5_JVDZOg&s'; //Si producto.url_imagen no existe o es nulo, usa la URL por defecto proporcionada. Para contemplar si es null
+                  
+                  
+                 // const imageSrc = usuario.url_imagen.startsWith('http') ? usuario.url_imagen : `/uploads/usuarios/${usuario.url_imagen}`;
                     // agregamos span con los datos del usuario: id, nombre, apellido y mail
                     // la clase actions esta en el css y le da estilo a los botones
                     // el boton de actualizar tiene un data-id que es el id del usuario y data-nombre que es el nombre del usuario
