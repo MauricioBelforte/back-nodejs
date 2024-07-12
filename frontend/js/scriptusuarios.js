@@ -19,7 +19,9 @@ document.addEventListener('DOMContentLoaded', () =>
         //mostrar imagen de multer
     const currentImage = document.getElementById('currentImage');
 
-   
+    const baseURL = 'https://back-nodejs-one.vercel.app' || 'http://localhost:3000';
+    //const baseURL = 'https://back-nodejs-one.vercel.app';
+    //const baseURL = 'http://localhost:3000';
     
     // mostrar u ocultar formulario de crear usuario
         mostrarCrearUsuarioFormBtn.addEventListener('click',() =>
@@ -44,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () =>
                 url_imagen: formData.get('archivo')
             };
     
-            const response = await fetch('http://localhost:3000/usuarios',
+            const response = await fetch(`${baseURL}/usuarios`,
             {
                 method: 'POST',
                 body: formData
@@ -103,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () =>
                 mail: formData.get('editMail')
             };
     
-            const response = await fetch(`http://localhost:3000/usuarios/${id}`, {
+            const response = await fetch(`${baseURL}/usuarios/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -136,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () =>
         async function listarUsuarios()
         {   
             listaUsuarios.classList.toggle('hidden');
-            const response = await fetch('http://localhost:3000/usuarios');
+            const response = await fetch(`${baseURL}/usuarios`);
             const usuarios = await response.json();
     
             listaUsuarios.innerHTML = '';//limpiamos la lista de usuarios
@@ -149,8 +151,8 @@ document.addEventListener('DOMContentLoaded', () =>
                     const li = document.createElement('li');//creamos un li
     
                   //  const imageSrc = usuario.url_imagen ? `/uploads/${usuario.url_imagen}` :'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUBbNf8tPjjMylsbREVGlN1Dj30k5_JVDZOg&s';
-    
-
+                  
+                  
                     
                    const imageSrc = usuario.url_imagen && usuario.url_imagen.startsWith('http') ?  //Este código verifica primero si producto.url_imagen existe y si empieza con 'http'.
                    usuario.url_imagen  //Si es así, usa ese valor, es decir la url de postimagenes que viene de la base de datos 
@@ -217,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () =>
                             button.addEventListener('click', async (e) =>
                             {
                                 const id = e.target.getAttribute('data-id');
-                                const response = await fetch(`http://localhost:3000/usuarios/${id}`,
+                                const response = await fetch(`${baseURL}/usuarios/${id}`,
                                 {
                                     method: 'DELETE'
                                 });
