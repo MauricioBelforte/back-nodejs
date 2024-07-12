@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () =>
         //mostrar imagen de multer
     const currentImage = document.getElementById('currentImage');
 
-    const baseURL = 'https://back-nodejs-one.vercel.app' || 'http://localhost:3000';
+    //const baseURL = 'https://back-nodejs-one.vercel.app' || 'http://localhost:3000';
     //const baseURL = 'https://back-nodejs-one.vercel.app';
-    //const baseURL = 'http://localhost:3000';
+    const baseURL = 'http://localhost:3000';
     
     // mostrar u ocultar formulario de crear usuario
         mostrarCrearUsuarioFormBtn.addEventListener('click',() =>

@@ -20,9 +20,9 @@ document.addEventListener('DOMContentLoaded', () =>
     const currentImageProducto = document.getElementById('currentImageProducto');
    
     
-    const baseURL = 'https://back-nodejs-one.vercel.app' || 'http://localhost:3000';
+    //const baseURL = 'https://back-nodejs-one.vercel.app' || 'http://localhost:3000';
     //const baseURL = 'https://back-nodejs-one.vercel.app';
-    //const baseURL = 'http://localhost:3000';
+    const baseURL = 'http://localhost:3000';
     
         /* Este metodo es para que el boton de crear producto muestre el formulario para crear el producto */
         mostrarCrearProductoFormBtn.addEventListener('click',() =>
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () =>
         /* Aca llama a esta funcion que hace la peticion a nuestra api */
         async function listarProductos()
         {
-            console.log(`${baseURL}/productos`);
+            
             listaProductos.classList.toggle('hidden');
             const response = await fetch(`${baseURL}/productos`); //Es una peticion GET por defecto, sino hay que pasar un segundo parametro a la funcion fetch
             const productos = await response.json();
